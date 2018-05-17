@@ -1,0 +1,800 @@
+
+
+Microchip Technology PIC PRO Macro Assembler V1.33 build 59893 
+                                                                                               Thu May 17 16:26:20 2018
+
+Microchip Technology Omniscient Code Generator (PRO mode) build 59893
+     1                           	processor	12F675
+     2                           	opt	pw 120
+     3                           	opt	pm
+     4                           	psect	nvBANK0,global,class=BANK0,space=1,delta=1
+     5                           	psect	cinit,global,class=CODE,merge=1,delta=2
+     6                           	psect	bssBANK0,global,class=BANK0,space=1,delta=1
+     7                           	psect	cstackBANK0,global,class=BANK0,space=1,delta=1
+     8                           	psect	maintext,global,class=CODE,split=1,delta=2
+     9                           	psect	pa_nodes,global,class=CODE,delta=2
+    10                           	dabs	1,0x5E,2
+    11  0000                     	;# 
+    12  0001                     	;# 
+    13  0002                     	;# 
+    14  0003                     	;# 
+    15  0004                     	;# 
+    16  0005                     	;# 
+    17  000A                     	;# 
+    18  000B                     	;# 
+    19  000C                     	;# 
+    20  000E                     	;# 
+    21  000E                     	;# 
+    22  000F                     	;# 
+    23  0010                     	;# 
+    24  0019                     	;# 
+    25  001E                     	;# 
+    26  001F                     	;# 
+    27  0081                     	;# 
+    28  0085                     	;# 
+    29  008C                     	;# 
+    30  008E                     	;# 
+    31  0090                     	;# 
+    32  0095                     	;# 
+    33  0096                     	;# 
+    34  0096                     	;# 
+    35  0099                     	;# 
+    36  009A                     	;# 
+    37  009A                     	;# 
+    38  009B                     	;# 
+    39  009C                     	;# 
+    40  009D                     	;# 
+    41  009E                     	;# 
+    42  009F                     	;# 
+    43                           
+    44                           	psect	nvBANK0
+    45  0028                     __pnvBANK0:	
+    46  0028                     _led_tmr:	
+    47  0028                     	ds	1
+    48  0029                     _output_tmr:	
+    49  0029                     	ds	1
+    50  0019                     _CMCON	set	25
+    51  0005                     _GPIO	set	5
+    52  0001                     _TMR0	set	1
+    53  0028                     _GPIO0	set	40
+    54  0029                     _GPIO1	set	41
+    55  002A                     _GPIO2	set	42
+    56  002B                     _GPIO3	set	43
+    57  002C                     _GPIO4	set	44
+    58  002D                     _GPIO5	set	45
+    59  009F                     _ANSEL	set	159
+    60  0081                     _OPTION_REG	set	129
+    61  0085                     _TRISIO	set	133
+    62                           
+    63                           ; #config settings
+    64  0003                     
+    65                           	psect	cinit
+    66  03F5                     start_initialization:	
+    67  03F5                     __initialization:	
+    68                           
+    69                           ; Clear objects allocated to BANK0
+    70  03F5  01A0               	clrf	__pbssBANK0& (0+127)
+    71  03F6  01A1               	clrf	(__pbssBANK0+1)& (0+127)
+    72  03F7  01A2               	clrf	(__pbssBANK0+2)& (0+127)
+    73  03F8  01A3               	clrf	(__pbssBANK0+3)& (0+127)
+    74  03F9  01A4               	clrf	(__pbssBANK0+4)& (0+127)
+    75  03FA  01A5               	clrf	(__pbssBANK0+5)& (0+127)
+    76  03FB  01A6               	clrf	(__pbssBANK0+6)& (0+127)
+    77  03FC  01A7               	clrf	(__pbssBANK0+7)& (0+127)
+    78  03FD                     end_of_initialization:	
+    79                           ;End of C runtime variable initialization code
+    80                           
+    81  03FD                     __end_of__initialization:	
+    82  03FD  0183               	clrf	3
+    83  03FE  2AD7               	ljmp	_main	;jump to C main() function
+    84                           
+    85                           	psect	bssBANK0
+    86  0020                     __pbssBANK0:	
+    87  0020                     _counter:	
+    88  0020                     	ds	2
+    89  0022                     _dip_sw_value:	
+    90  0022                     	ds	2
+    91  0024                     _dip_sw_pcnt:	
+    92  0024                     	ds	1
+    93  0025                     _hc164_shift:	
+    94  0025                     	ds	1
+    95  0026                     _sys_flags:	
+    96  0026                     	ds	1
+    97  0027                     _tmp1:	
+    98  0027                     	ds	1
+    99                           
+   100                           	psect	cstackBANK0
+   101  002A                     __pcstackBANK0:	
+   102  002A                     ?_main:	
+   103  002A                     ??_main:	
+   104                           ; 0 bytes @ 0x0
+   105                           
+   106                           
+   107                           ; 0 bytes @ 0x0
+   108  002A                     	ds	1
+   109                           
+   110                           	psect	maintext
+   111  02D7                     __pmaintext:	
+   112 ;;
+   113 ;;Main: autosize = 0, tempsize = 1, incstack = 0, save=0
+   114 ;;
+   115 ;; *************** function _main *****************
+   116 ;; Defined at:
+   117 ;;		line 123 in file "main.c"
+   118 ;; Parameters:    Size  Location     Type
+   119 ;;		None
+   120 ;; Auto vars:     Size  Location     Type
+   121 ;;		None
+   122 ;; Return value:  Size  Location     Type
+   123 ;;		None               void
+   124 ;; Registers used:
+   125 ;;		wreg, status,2, status,0
+   126 ;; Tracked objects:
+   127 ;;		On entry : 17F/0
+   128 ;;		On exit  : 20/0
+   129 ;;		Unchanged: 0/0
+   130 ;; Data sizes:     COMMON   BANK0
+   131 ;;      Params:         0       0
+   132 ;;      Locals:         0       0
+   133 ;;      Temps:          0       1
+   134 ;;      Totals:         0       1
+   135 ;;Total ram usage:        1 bytes
+   136 ;; This function calls:
+   137 ;;		Nothing
+   138 ;; This function is called by:
+   139 ;;		Startup code after reset
+   140 ;; This function uses a non-reentrant model
+   141 ;;
+   142                           
+   143                           
+   144                           ;psect for function _main
+   145  02D7                     _main:	
+   146                           
+   147                           ;main.c: 125: (CMCON = 0x07, ANSEL = 0x00, TRISIO = 0b00111000, GPIO = 0x00);
+   148                           
+   149                           ;incstack = 0
+   150                           ; Regs used in _main: [wreg+status,2+status,0]
+   151  02D7  3007               	movlw	7
+   152  02D8  0099               	movwf	25	;volatile
+   153  02D9  1683               	bsf	3,5	;RP0=1, select bank1
+   154  02DA  019F               	clrf	31	;volatile
+   155  02DB  3038               	movlw	56
+   156  02DC  0085               	movwf	5	;volatile
+   157  02DD  1283               	bcf	3,5	;RP0=0, select bank0
+   158  02DE  0185               	clrf	5	;volatile
+   159                           
+   160                           ;main.c: 126: (OPTION_REG = 0b10000111, TMR0 = 61);
+   161  02DF  3087               	movlw	135
+   162  02E0  1683               	bsf	3,5	;RP0=1, select bank1
+   163  02E1  0081               	movwf	1	;volatile
+   164  02E2  303D               	movlw	61
+   165  02E3  1283               	bcf	3,5	;RP0=0, select bank0
+   166  02E4  0081               	movwf	1	;volatile
+   167                           
+   168                           ;main.c: 128: sys_flags.b0 = GPIO3;
+   169  02E5  1026               	bcf	_sys_flags,0
+   170  02E6  1985               	btfsc	5,3	;volatile
+   171  02E7  1426               	bsf	_sys_flags,0
+   172                           
+   173                           ;main.c: 129: sys_flags.b1 = GPIO4;
+   174  02E8  1283               	bcf	3,5	;RP0=0, select bank0
+   175  02E9  10A6               	bcf	_sys_flags,1
+   176  02EA  1A05               	btfsc	5,4	;volatile
+   177  02EB  14A6               	bsf	_sys_flags,1
+   178                           
+   179                           ;main.c: 130: GPIO1 = 0;
+   180  02EC  1283               	bcf	3,5	;RP0=0, select bank0
+   181  02ED  1085               	bcf	5,1	;volatile
+   182                           
+   183                           ;main.c: 131: GPIO2 = 0;
+   184  02EE  1105               	bcf	5,2	;volatile
+   185                           
+   186                           ;main.c: 132: GPIO2 = 1;
+   187  02EF  1505               	bsf	5,2	;volatile
+   188  02F0  3028               	movlw	40
+   189                           
+   190                           ;main.c: 133: dip_sw_pcnt = 0;
+   191  02F1  01A4               	clrf	_dip_sw_pcnt
+   192                           
+   193                           ;main.c: 134: led_tmr = 40;
+   194  02F2  00A8               	movwf	_led_tmr
+   195                           
+   196                           ;main.c: 135: output_tmr = 40;
+   197  02F3  00A9               	movwf	_output_tmr
+   198  02F4  303F               	movlw	63
+   199                           
+   200                           ;main.c: 137: (hc164_shift.b6 = 1);
+   201  02F5  1725               	bsf	_hc164_shift,6
+   202                           
+   203                           ;main.c: 138: (hc164_shift.b7 = 0);
+   204  02F6  13A5               	bcf	_hc164_shift,7
+   205                           
+   206                           ;main.c: 139: (hc164_shift._byte |= 0b00111111);
+   207  02F7  04A5               	iorwf	_hc164_shift,f
+   208                           
+   209                           ;main.c: 140: (sys_flags.b3 = 1, dip_sw_pcnt = 0);
+   210  02F8  15A6               	bsf	_sys_flags,3
+   211  02F9  01A4               	clrf	_dip_sw_pcnt
+   212                           
+   213                           ;main.c: 141: (sys_flags.b5 = 1);
+   214  02FA  16A6               	bsf	_sys_flags,5
+   215  02FB                     l789:	
+   216                           
+   217                           ;main.c: 145: if (TMR0 == 0xff) {
+   218  02FB  0801               	movf	1,w	;volatile
+   219  02FC  3AFF               	xorlw	255
+   220  02FD  1D03               	skipz
+   221  02FE  2B13               	goto	l803
+   222                           
+   223                           ;main.c: 146: TMR0 = 61;
+   224  02FF  303D               	movlw	61
+   225  0300  0081               	movwf	1	;volatile
+   226                           
+   227                           ;main.c: 148: if (output_tmr) --output_tmr;
+   228  0301  0829               	movf	_output_tmr,w
+   229  0302  1903               	btfsc	3,2
+   230  0303  2B06               	goto	l45
+   231  0304  03A9               	decf	_output_tmr,f
+   232  0305  2B0A               	goto	l797
+   233  0306                     l45:	
+   234                           
+   235                           ;main.c: 149: else if ((hc164_shift.b7 == 0)) {
+   236  0306  1BA5               	btfsc	_hc164_shift,7
+   237  0307  2B0A               	goto	l797
+   238                           
+   239                           ;main.c: 150: (hc164_shift.b7 = 1);
+   240  0308  17A5               	bsf	_hc164_shift,7
+   241                           
+   242                           ;main.c: 151: (sys_flags.b5 = 1);
+   243  0309  16A6               	bsf	_sys_flags,5
+   244  030A                     l797:	
+   245                           
+   246                           ;main.c: 152: }
+   247                           ;main.c: 154: if (led_tmr) --led_tmr;
+   248  030A  0828               	movf	_led_tmr,w
+   249  030B  1903               	btfsc	3,2
+   250  030C  2B0F               	goto	l48
+   251  030D  03A8               	decf	_led_tmr,f
+   252  030E  2B13               	goto	l803
+   253  030F                     l48:	
+   254                           
+   255                           ;main.c: 155: else if ((hc164_shift.b6 == 1)) {
+   256  030F  1F25               	btfss	_hc164_shift,6
+   257  0310  2B13               	goto	l803
+   258                           
+   259                           ;main.c: 156: (hc164_shift.b6 = 0);
+   260  0311  1325               	bcf	_hc164_shift,6
+   261                           
+   262                           ;main.c: 157: (sys_flags.b5 = 1);
+   263  0312  16A6               	bsf	_sys_flags,5
+   264  0313                     l803:	
+   265                           
+   266                           ;main.c: 158: }
+   267                           ;main.c: 159: }
+   268                           ;main.c: 161: if (sys_flags.b0 != GPIO3) {
+   269  0313  0826               	movf	_sys_flags,w
+   270  0314  3901               	andlw	1
+   271  0315  00AA               	movwf	??_main
+   272  0316  3000               	movlw	0
+   273  0317  1985               	btfsc	5,3	;volatile
+   274  0318  3001               	movlw	1
+   275  0319  062A               	xorwf	??_main,w
+   276  031A  1903               	skipnz
+   277  031B  2B2F               	goto	l825
+   278                           
+   279                           ;main.c: 162: sys_flags.b0 = GPIO3;
+   280  031C  1026               	bcf	_sys_flags,0
+   281  031D  1D85               	btfss	5,3	;volatile
+   282  031E  2B20               	goto	u465
+   283  031F  1426               	bsf	_sys_flags,0
+   284  0320                     u465:	
+   285                           
+   286                           ;main.c: 163: if (GPIO3) {
+   287  0320  1283               	bcf	3,5	;RP0=0, select bank0
+   288  0321  1D85               	btfss	5,3	;volatile
+   289  0322  2B2F               	goto	l825
+   290                           
+   291                           ;main.c: 164: if ((sys_flags.b2 == 1)) {
+   292  0323  1D26               	btfss	_sys_flags,2
+   293  0324  2B28               	goto	l53
+   294                           
+   295                           ;main.c: 165: led_tmr = 40;
+   296  0325  3028               	movlw	40
+   297                           
+   298                           ;main.c: 166: (hc164_shift.b6 = 1);
+   299                           
+   300                           ;main.c: 167: output_tmr = 40;
+   301                           
+   302                           ;main.c: 168: (hc164_shift.b7 = 0);
+   303  0326  23EF               	fcall	PL2	;call to abstracted procedure
+   304                           
+   305                           ;main.c: 169: } else {
+   306  0327  2B2C               	goto	l819
+   307  0328                     l53:	
+   308  0328  3002               	movlw	2
+   309                           
+   310                           ;main.c: 170: (hc164_shift.b7 = 1);
+   311  0329  17A5               	bsf	_hc164_shift,7
+   312                           
+   313                           ;main.c: 171: led_tmr = 2;
+   314  032A  00A8               	movwf	_led_tmr
+   315                           
+   316                           ;main.c: 172: (hc164_shift.b6 = 1);
+   317  032B  1725               	bsf	_hc164_shift,6
+   318  032C                     l819:	
+   319                           
+   320                           ;main.c: 173: }
+   321                           ;main.c: 174: (sys_flags.b5 = 1);
+   322  032C  16A6               	bsf	_sys_flags,5
+   323                           
+   324                           ;main.c: 175: (sys_flags.b3 = 1, dip_sw_pcnt = 0);
+   325  032D  15A6               	bsf	_sys_flags,3
+   326  032E  01A4               	clrf	_dip_sw_pcnt
+   327  032F                     l825:	
+   328                           
+   329                           ;main.c: 176: }
+   330                           ;main.c: 177: }
+   331                           ;main.c: 179: if (sys_flags.b1 != GPIO4) {
+   332  032F  0C26               	rrf	_sys_flags,w
+   333  0330  3901               	andlw	1
+   334  0331  00AA               	movwf	??_main
+   335  0332  3000               	movlw	0
+   336  0333  1A05               	btfsc	5,4	;volatile
+   337  0334  3001               	movlw	1
+   338  0335  062A               	xorwf	??_main,w
+   339  0336  1903               	skipnz
+   340  0337  2B5E               	goto	l55
+   341                           
+   342                           ;main.c: 180: sys_flags.b1 = GPIO4;
+   343  0338  10A6               	bcf	_sys_flags,1
+   344  0339  1E05               	btfss	5,4	;volatile
+   345  033A  2B3C               	goto	u505
+   346  033B  14A6               	bsf	_sys_flags,1
+   347  033C                     u505:	
+   348                           
+   349                           ;main.c: 181: if (GPIO4) {
+   350  033C  1283               	bcf	3,5	;RP0=0, select bank0
+   351  033D  1E05               	btfss	5,4	;volatile
+   352  033E  2B5E               	goto	l55
+   353                           
+   354                           ;main.c: 182: if (counter) {
+   355  033F  0821               	movf	_counter+1,w
+   356  0340  0420               	iorwf	_counter,w
+   357  0341  1903               	skipnz
+   358  0342  2B50               	goto	l841
+   359                           
+   360                           ;main.c: 183: --counter;
+   361  0343  3001               	movlw	1
+   362  0344  02A0               	subwf	_counter,f
+   363  0345  3000               	movlw	0
+   364  0346  1C03               	skipc
+   365  0347  03A1               	decf	_counter+1,f
+   366  0348  02A1               	subwf	_counter+1,f
+   367                           
+   368                           ;main.c: 184: if (!led_tmr) led_tmr = 2;
+   369  0349  08A8               	movf	_led_tmr,f
+   370  034A  1D03               	skipz
+   371  034B  2B4E               	goto	l837
+   372  034C  3002               	movlw	2
+   373  034D  00A8               	movwf	_led_tmr
+   374  034E                     l837:	
+   375                           
+   376                           ;main.c: 185: (hc164_shift.b6 = 1);
+   377  034E  1725               	bsf	_hc164_shift,6
+   378                           
+   379                           ;main.c: 186: (sys_flags.b5 = 1);
+   380  034F  16A6               	bsf	_sys_flags,5
+   381  0350                     l841:	
+   382                           
+   383                           ;main.c: 187: }
+   384                           ;main.c: 188: if (!counter) {
+   385  0350  0821               	movf	_counter+1,w
+   386  0351  0420               	iorwf	_counter,w
+   387  0352  1D03               	skipz
+   388  0353  2B5E               	goto	l55
+   389                           
+   390                           ;main.c: 189: if ((sys_flags.b2 == 1)) {
+   391  0354  1D26               	btfss	_sys_flags,2
+   392  0355  2B5B               	goto	l60
+   393                           
+   394                           ;main.c: 190: led_tmr = 40;
+   395  0356  3028               	movlw	40
+   396                           
+   397                           ;main.c: 191: (hc164_shift.b6 = 1);
+   398                           
+   399                           ;main.c: 192: output_tmr = 40;
+   400                           
+   401                           ;main.c: 193: (hc164_shift.b7 = 0);
+   402  0357  23EF               	fcall	PL2	;call to abstracted procedure
+   403                           
+   404                           ;main.c: 194: (sys_flags.b3 = 1, dip_sw_pcnt = 0);
+   405  0358  15A6               	bsf	_sys_flags,3
+   406  0359  01A4               	clrf	_dip_sw_pcnt
+   407                           
+   408                           ;main.c: 195: } else {
+   409  035A  2B5D               	goto	l61
+   410  035B                     l60:	
+   411                           
+   412                           ;main.c: 196: (hc164_shift.b7 = 1);
+   413  035B  17A5               	bsf	_hc164_shift,7
+   414                           
+   415                           ;main.c: 197: (hc164_shift.b6 = 0);
+   416  035C  1325               	bcf	_hc164_shift,6
+   417  035D                     l61:	
+   418                           
+   419                           ;main.c: 198: }
+   420                           ;main.c: 199: (sys_flags.b5 = 1);
+   421  035D  16A6               	bsf	_sys_flags,5
+   422  035E                     l55:	
+   423                           
+   424                           ;main.c: 200: }
+   425                           ;main.c: 201: }
+   426                           ;main.c: 202: }
+   427                           ;main.c: 204: if ((sys_flags.b3 == 1)) {
+   428  035E  1DA6               	btfss	_sys_flags,3
+   429  035F  2BD0               	goto	l943
+   430                           
+   431                           ;main.c: 205: if (dip_sw_pcnt == 0) {
+   432  0360  08A4               	movf	_dip_sw_pcnt,f
+   433  0361  1D03               	skipz
+   434  0362  2B69               	goto	l867
+   435  0363  303F               	movlw	63
+   436                           
+   437                           ;main.c: 206: dip_sw_value = 0;
+   438  0364  01A2               	clrf	_dip_sw_value
+   439  0365  01A3               	clrf	_dip_sw_value+1
+   440                           
+   441                           ;main.c: 207: ((hc164_shift._byte |= 0b00111111), hc164_shift.b0 = 0);
+   442  0366  04A5               	iorwf	_hc164_shift,f
+   443  0367  1025               	bcf	_hc164_shift,0
+   444  0368  2B74               	goto	l877
+   445  0369                     l867:	
+   446                           ;main.c: 210: } else if (dip_sw_pcnt == 1) {
+   447                           
+   448                           ;main.c: 209: ++dip_sw_pcnt;
+   449                           
+   450                           ;main.c: 208: (sys_flags.b5 = 1);
+   451                           
+   452  0369  0B24               	decfsz	_dip_sw_pcnt,w
+   453  036A  2B76               	goto	l879
+   454                           
+   455                           ;main.c: 211: if (GPIO5 == 0) dip_sw_value += 100;
+   456  036B  1A85               	btfsc	5,5	;volatile
+   457  036C  2B71               	goto	l873
+   458  036D  3064               	movlw	100
+   459  036E  07A2               	addwf	_dip_sw_value,f
+   460  036F  1803               	skipnc
+   461  0370  0AA3               	incf	_dip_sw_value+1,f
+   462  0371                     l873:	
+   463                           
+   464                           ;main.c: 212: ((hc164_shift._byte |= 0b00111111), hc164_shift.b1 = 0);
+   465  0371  303F               	movlw	63
+   466  0372  04A5               	iorwf	_hc164_shift,f
+   467  0373  10A5               	bcf	_hc164_shift,1
+   468  0374                     l877:	
+   469                           
+   470                           ;main.c: 213: (sys_flags.b5 = 1);
+   471  0374  16A6               	bsf	_sys_flags,5
+   472                           
+   473                           ;main.c: 215: } else if (dip_sw_pcnt == 2) {
+   474  0375  2BCF               	goto	L1
+   475  0376                     l879:	
+   476  0376  0824               	movf	_dip_sw_pcnt,w
+   477  0377  3A02               	xorlw	2
+   478  0378  1D03               	skipz
+   479  0379  2B84               	goto	l891
+   480                           
+   481                           ;main.c: 216: if (GPIO5 == 0) dip_sw_value += 200;
+   482  037A  1A85               	btfsc	5,5	;volatile
+   483  037B  2B80               	goto	l885
+   484  037C  30C8               	movlw	200
+   485  037D  07A2               	addwf	_dip_sw_value,f
+   486  037E  1803               	skipnc
+   487  037F  0AA3               	incf	_dip_sw_value+1,f
+   488  0380                     l885:	
+   489                           
+   490                           ;main.c: 217: ((hc164_shift._byte |= 0b00111111), hc164_shift.b2 = 0);
+   491  0380  303F               	movlw	63
+   492  0381  04A5               	iorwf	_hc164_shift,f
+   493  0382  1125               	bcf	_hc164_shift,2
+   494  0383  2B74               	goto	l877
+   495  0384                     l891:	
+   496  0384  0824               	movf	_dip_sw_pcnt,w
+   497  0385  3A03               	xorlw	3
+   498  0386  1D03               	skipz
+   499  0387  2B94               	goto	l903
+   500                           
+   501                           ;main.c: 221: if (GPIO5 == 0) dip_sw_value += 400;
+   502  0388  1A85               	btfsc	5,5	;volatile
+   503  0389  2B90               	goto	l897
+   504  038A  3090               	movlw	144
+   505  038B  07A2               	addwf	_dip_sw_value,f
+   506  038C  1803               	skipnc
+   507  038D  0AA3               	incf	_dip_sw_value+1,f
+   508  038E  3001               	movlw	1
+   509  038F  07A3               	addwf	_dip_sw_value+1,f
+   510  0390                     l897:	
+   511                           
+   512                           ;main.c: 222: ((hc164_shift._byte |= 0b00111111), hc164_shift.b3 = 0);
+   513  0390  303F               	movlw	63
+   514  0391  04A5               	iorwf	_hc164_shift,f
+   515  0392  11A5               	bcf	_hc164_shift,3
+   516  0393  2B74               	goto	l877
+   517  0394                     l903:	
+   518  0394  0824               	movf	_dip_sw_pcnt,w
+   519  0395  3A04               	xorlw	4
+   520  0396  1D03               	skipz
+   521  0397  2BA4               	goto	l915
+   522                           
+   523                           ;main.c: 226: if (GPIO5 == 0) dip_sw_value += 800;
+   524  0398  1A85               	btfsc	5,5	;volatile
+   525  0399  2BA0               	goto	l909
+   526  039A  3020               	movlw	32
+   527  039B  07A2               	addwf	_dip_sw_value,f
+   528  039C  1803               	skipnc
+   529  039D  0AA3               	incf	_dip_sw_value+1,f
+   530  039E  3003               	movlw	3
+   531  039F  07A3               	addwf	_dip_sw_value+1,f
+   532  03A0                     l909:	
+   533                           
+   534                           ;main.c: 227: ((hc164_shift._byte |= 0b00111111), hc164_shift.b4 = 0);
+   535  03A0  303F               	movlw	63
+   536  03A1  04A5               	iorwf	_hc164_shift,f
+   537  03A2  1225               	bcf	_hc164_shift,4
+   538  03A3  2B74               	goto	l877
+   539  03A4                     l915:	
+   540  03A4  0824               	movf	_dip_sw_pcnt,w
+   541  03A5  3A05               	xorlw	5
+   542  03A6  1D03               	skipz
+   543  03A7  2BB4               	goto	l927
+   544                           
+   545                           ;main.c: 231: if (GPIO5 == 0) dip_sw_value += 1600;
+   546  03A8  1A85               	btfsc	5,5	;volatile
+   547  03A9  2BB0               	goto	l921
+   548  03AA  3040               	movlw	64
+   549  03AB  07A2               	addwf	_dip_sw_value,f
+   550  03AC  1803               	skipnc
+   551  03AD  0AA3               	incf	_dip_sw_value+1,f
+   552  03AE  3006               	movlw	6
+   553  03AF  07A3               	addwf	_dip_sw_value+1,f
+   554  03B0                     l921:	
+   555                           
+   556                           ;main.c: 232: ((hc164_shift._byte |= 0b00111111), hc164_shift.b5 = 0);
+   557  03B0  303F               	movlw	63
+   558  03B1  04A5               	iorwf	_hc164_shift,f
+   559  03B2  12A5               	bcf	_hc164_shift,5
+   560  03B3  2B74               	goto	l877
+   561  03B4                     l927:	
+   562  03B4  0824               	movf	_dip_sw_pcnt,w
+   563  03B5  3A06               	xorlw	6
+   564  03B6  1D03               	skipz
+   565  03B7  2BD0               	goto	l943
+   566                           
+   567                           ;main.c: 236: if (GPIO5 == 0) dip_sw_value += 3200;
+   568  03B8  1A85               	btfsc	5,5	;volatile
+   569  03B9  2BC0               	goto	l933
+   570  03BA  3080               	movlw	128
+   571  03BB  07A2               	addwf	_dip_sw_value,f
+   572  03BC  1803               	skipnc
+   573  03BD  0AA3               	incf	_dip_sw_value+1,f
+   574  03BE  300C               	movlw	12
+   575  03BF  07A3               	addwf	_dip_sw_value+1,f
+   576  03C0                     l933:	
+   577                           
+   578                           ;main.c: 237: (hc164_shift._byte |= 0b00111111);
+   579  03C0  303F               	movlw	63
+   580  03C1  04A5               	iorwf	_hc164_shift,f
+   581                           
+   582                           ;main.c: 238: counter = dip_sw_value;
+   583  03C2  0823               	movf	_dip_sw_value+1,w
+   584  03C3  00A1               	movwf	_counter+1
+   585  03C4  0822               	movf	_dip_sw_value,w
+   586  03C5  00A0               	movwf	_counter
+   587                           
+   588                           ;main.c: 239: if (dip_sw_value == 0) (sys_flags.b2 = 0);
+   589  03C6  0823               	movf	_dip_sw_value+1,w
+   590  03C7  0422               	iorwf	_dip_sw_value,w
+   591  03C8  1D03               	skipz
+   592  03C9  2BCC               	goto	l82
+   593  03CA  1126               	bcf	_sys_flags,2
+   594  03CB  2BCD               	goto	l83
+   595  03CC                     l82:	
+   596                           
+   597                           ;main.c: 240: else (sys_flags.b2 = 1);
+   598  03CC  1526               	bsf	_sys_flags,2
+   599  03CD                     l83:	
+   600                           
+   601                           ;main.c: 241: (sys_flags.b5 = 1);
+   602  03CD  16A6               	bsf	_sys_flags,5
+   603                           
+   604                           ;main.c: 242: (sys_flags.b3 = 0);
+   605  03CE  11A6               	bcf	_sys_flags,3
+   606  03CF                     L1:	
+   607                           
+   608                           ;main.c: 214: ++dip_sw_pcnt;
+   609  03CF  0AA4               	incf	_dip_sw_pcnt,f
+   610  03D0                     l943:	
+   611                           
+   612                           ;main.c: 244: }
+   613                           ;main.c: 245: }
+   614                           ;main.c: 247: if ((sys_flags.b5 == 1)) {
+   615  03D0  1EA6               	btfss	_sys_flags,5
+   616  03D1  2AFB               	goto	l789
+   617                           
+   618                           ;main.c: 248: tmp1 = 8;
+   619  03D2  3008               	movlw	8
+   620  03D3  00A7               	movwf	_tmp1
+   621  03D4                     l85:	
+   622                           ;main.c: 249: while (tmp1) {
+   623                           
+   624  03D4  08A7               	movf	_tmp1,f
+   625  03D5  1903               	btfsc	3,2
+   626  03D6  2BED               	goto	l89
+   627                           
+   628                           ;main.c: 250: if (((hc164_shift._byte) & (1 <<((tmp1 - 1))))) GPIO0 = 1;
+   629  03D7  3001               	movlw	1
+   630  03D8  00AA               	movwf	??_main
+   631  03D9  0827               	movf	_tmp1,w
+   632  03DA  3EFF               	addlw	-1
+   633  03DB  3E01               	addlw	1
+   634  03DC  2BDF               	goto	u724
+   635  03DD                     u725:	
+   636  03DD  1003               	clrc
+   637  03DE  0DAA               	rlf	??_main,f
+   638  03DF                     u724:	
+   639  03DF  3EFF               	addlw	-1
+   640  03E0  1D03               	skipz
+   641  03E1  2BDD               	goto	u725
+   642  03E2  082A               	movf	??_main,w
+   643  03E3  0525               	andwf	_hc164_shift,w
+   644  03E4  1903               	btfsc	3,2
+   645  03E5  2BE8               	goto	l87
+   646  03E6  1405               	bsf	5,0	;volatile
+   647  03E7  2BE9               	goto	l88
+   648  03E8                     l87:	
+   649                           
+   650                           ;main.c: 251: else GPIO0 = 0;
+   651  03E8  1005               	bcf	5,0	;volatile
+   652  03E9                     l88:	
+   653                           
+   654                           ;main.c: 252: GPIO1 = 1;
+   655  03E9  1485               	bsf	5,1	;volatile
+   656                           
+   657                           ;main.c: 253: GPIO1 = 0;
+   658  03EA  1085               	bcf	5,1	;volatile
+   659                           
+   660                           ;main.c: 254: tmp1--;
+   661  03EB  03A7               	decf	_tmp1,f
+   662  03EC  2BD4               	goto	l85
+   663  03ED                     l89:	
+   664                           
+   665                           ;main.c: 255: }
+   666                           ;main.c: 256: (sys_flags.b5 = 0);
+   667  03ED  12A6               	bcf	_sys_flags,5
+   668  03EE  2AFB               	goto	l789
+   669  03EF                     __end_of_main:	
+   670  005E                     btemp	set	94	;btemp
+   671  005E                     wtemp	set	94
+   672  005E                     wtemp0	set	94
+   673  0060                     wtemp1	set	96
+   674  0062                     wtemp2	set	98
+   675  0064                     wtemp3	set	100
+   676  0066                     wtemp4	set	102
+   677  0068                     wtemp5	set	104
+   678  005F                     wtemp6	set	95
+   679  005E                     ttemp	set	94
+   680  005E                     ttemp0	set	94
+   681  0061                     ttemp1	set	97
+   682  0064                     ttemp2	set	100
+   683  0067                     ttemp3	set	103
+   684  005F                     ttemp4	set	95
+   685  005E                     ltemp	set	94
+   686  005E                     ltemp0	set	94
+   687  0062                     ltemp1	set	98
+   688  0066                     ltemp2	set	102
+   689  0060                     ltemp3	set	96
+   690  03EF                     PL2:	
+   691  03EF  00A8               	movwf	_led_tmr
+   692  03F0  3028               	movlw	40
+   693  03F1  1725               	bsf	_hc164_shift,6
+   694  03F2  00A9               	movwf	_output_tmr
+   695  03F3  13A5               	bcf	_hc164_shift,7
+   696  03F4  0008               	return
+   697  03F5                     __end_ofPL2:	
+
+
+Data Sizes:
+    Strings     0
+    Constant    0
+    Data        0
+    BSS         8
+    Persistent  2
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMMON            0      0       0
+    BANK0            62      1      11
+
+Pointer List with Targets:
+
+    None.
+
+Critical Paths under _main in COMMON
+
+    None.
+
+Critical Paths under _main in BANK0
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                 1     1      0       0
+                                              0 BANK0      1     1      0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 0
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+BITCOMMON            0      0       0       0        0.0%
+EEDATA              80      0       0       0        0.0%
+NULL                 0      0       0       0        0.0%
+CODE                 0      0       0       0        0.0%
+BITSFR0              0      0       0       1        0.0%
+SFR0                 0      0       0       1        0.0%
+COMMON               0      0       0       1        0.0%
+BITSFR1              0      0       0       2        0.0%
+SFR1                 0      0       0       2        0.0%
+STACK                0      0       0       2        0.0%
+BITBANK0            3E      0       0       3        0.0%
+BANK0               3E      1       B       4       17.7%
+ABS                  0      0       B       5        0.0%
+DATA                 0      0       B       6        0.0%
+
+
+Microchip Technology PIC Macro Assembler V1.33 build 59893 
+Symbol Table                                                                                   Thu May 17 16:26:20 2018
+
+                     PL2 03EF                       l60 035B                       l61 035D  
+                     l53 0328                       l45 0306                       l55 035E  
+                     l48 030F                       l82 03CC                       l83 03CD  
+                     l85 03D4                       l87 03E8                       l88 03E9  
+                     l89 03ED                      l803 0313                      l903 0394  
+                    l921 03B0                      l841 0350                      l825 032F  
+                    l915 03A4                      l819 032C                      l933 03C0  
+                    l909 03A0                      l837 034E                      l927 03B4  
+                    l943 03D0                      l873 0371                      l891 0384  
+                    l867 0369                      l885 0380                      l877 0374  
+                    l797 030A                      l789 02FB                      l879 0376  
+                    l897 0390                      u505 033C                      u465 0320  
+                    u724 03DF                      u725 03DD             __CFG_IDLOC0$ 0005  
+           __CFG_IDLOC1$ 0009             __CFG_IDLOC2$ 0001             __CFG_IDLOC3$ 0003  
+                   _GPIO 0005                     _TMR0 0001                     _main 02D7  
+                   _tmp1 0027                     btemp 005E                     ltemp 005E  
+                   start 0000                     ttemp 005E                     wtemp 005E  
+                  ?_main 002A            __CFG_WDTE$OFF 0000                    _CMCON 0019  
+                  _ANSEL 009F                    _GPIO0 0028                    _GPIO1 0029  
+                  _GPIO2 002A                    _GPIO3 002B                    _GPIO4 002C  
+                  _GPIO5 002D                    ltemp0 005E                    ltemp1 0062  
+                  ltemp2 0066                    ltemp3 0060                    ttemp0 005E  
+                  ttemp1 0061                    ttemp2 0064                    ttemp3 0067  
+                  ttemp4 005F                    status 0003                    wtemp0 005E  
+                  wtemp1 0060                    wtemp2 0062                    wtemp3 0064  
+                  wtemp4 0066                    wtemp5 0068                    wtemp6 005F  
+         __CFG_MCLRE$OFF 0000          __initialization 03F5             __end_of_main 03EF  
+                 ??_main 002A                   _TRISIO 0085  __end_of__initialization 03FD  
+             __end_ofPL2 03F5              _hc164_shift 0025               __pbssBANK0 0020  
+             __pmaintext 02D7                  _led_tmr 0028             _dip_sw_value 0022  
+                _counter 0020     end_of_initialization 03FD               _output_tmr 0029  
+    start_initialization 03F5                ___latbits 0000            __pcstackBANK0 002A  
+              __pnvBANK0 0028              _dip_sw_pcnt 0024                _sys_flags 0026  
+          __size_of_main 0118               _OPTION_REG 0081        __CFG_FOSC$INTRCIO 0000  

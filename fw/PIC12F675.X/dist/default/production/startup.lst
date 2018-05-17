@@ -1,0 +1,155 @@
+
+
+Microchip Technology PIC Macro Assembler V1.33 build 59893 
+                                                                                                           Thu May 17 16:26:20 2018
+
+
+     1                           
+     2                           	; Microchip MPLAB XC8 C Compiler V1.33
+     3                           	; Copyright (C) 1984-2014 HI-TECH Software
+     4                           
+     5                           	; Auto-generated runtime startup code for final link stage.
+     6                           
+     7                           	;
+     8                           	; Compiler options:
+     9                           	;
+    10                           	; --chip=12F675 -G -mdist/default/production/PIC12F675.X.production.map \
+    11                           	; --double=24 --float=24 --opt=all,+asm,+asmfile,-speed,+space,-debug \
+    12                           	; --addrqual=ignore --mode=pro -N31 --warn=0 --asmlist \
+    13                           	; -DXPRJ_default=default \
+    14                           	; --summary=default,+psect,+class,+mem,+hex,-file \
+    15                           	; --output=default,-inhx032 \
+    16                           	; --runtime=default,+clear,+init,+keep,-no_startup,+osccal,-resetbits,-download,-stackcall,+clib \
+
+    17                           	; --output=-mcof,+elf:multilocs --stack=compiled:auto:auto \
+    18                           	; --errformat=%f:%l: error: (%n) %s \
+    19                           	; --warnformat=%f:%l: warning: (%n) %s \
+    20                           	; --msgformat=%f:%l: advisory: (%n) %s \
+    21                           	; -odist/default/production/PIC12F675.X.production.elf \
+    22                           	; build/default/production/main.p1
+    23                           	;
+    24                           
+    25                           
+    26                           	processor	12F675
+    27                           
+    28                           	global	_main,start,reset_vec
+    29                           	fnroot	_main
+    30                           	psect	config,class=CONFIG,delta=2,noexec
+    31                           	psect	idloc,class=IDLOC,delta=2,noexec
+    32                           	psect	code,class=CODE,delta=2
+    33                           	psect	powerup,class=CODE,delta=2
+    34                           	psect	reset_vec,class=CODE,delta=2
+    35                           	psect	maintext,class=CODE,delta=2
+    36  0000                     	Z	set	2
+    37  0002                     	PCL	set	2
+    38  0002                     	INDF	set	0
+    39  0000                     
+    40                           	OSCCAL	equ	0x90
+    41  0090                     	psect	osccal,class=CODE,delta=2
+    42                           global ___osccal_val
+    43                           ___osccal_val:
+    44  03FF                     	;oscillator constant would be pre-programmed here
+    45                           	STATUS	equ	3
+    46  0003                     	PCLATH	equ	0Ah
+    47  000A                     
+    48                           	psect	eeprom_data,class=EEDATA,delta=2,space=3,noexec
+    49                           	psect	intentry,class=CODE,delta=2
+    50                           	psect	functab,class=CODE,delta=2
+    51                           	global	intlevel0,intlevel1,intlevel2, intlevel3, intlevel4, intlevel5
+    52                           intlevel0:
+    53  0000                     intlevel1:
+    54  0000                     intlevel2:
+    55  0000                     intlevel3:
+    56  0000                     intlevel4:
+    57  0000                     intlevel5:
+    58  0000                     	psect	init,class=CODE,delta=2
+    59                           	psect	cinit,class=CODE,delta=2
+    60                           	psect	text,class=CODE,delta=2
+    61                           	psect	end_init,class=CODE,delta=2
+    62                           	psect	clrtext,class=CODE,delta=2
+    63                           	FSR	set	4
+    64  0004                     	psect	strings,class=CODE,delta=2,reloc=256
+    65                           
+    66                           	global stacklo, stackhi
+    67                           	stacklo	equ	0
+    68  0000                     	stackhi	equ	0
+    69  0000                     
+    70                           
+    71                           	psect	stack,class=STACK,space=2,noexec
+    72                           	global ___sp,___int_sp
+    73                           	___sp:
+    74  0000                     	___int_sp:
+    75  0000                     	psect	reset_vec
+    76                           reset_vec:
+    77  0000                     	; No powerup routine
+    78                           	; No interrupt routine
+    79                           
+    80                           
+    81                           	psect	init
+    82                           start
+    83  0000                     	psect	end_init
+    84                           	bsf	STATUS,5		;select bank 1
+    85  0000  1683               	fcall	___osccal_val
+    86  0001  23FF               movwf	0x90 ^ 0x80
+    87  0002  0090               	bcf	STATUS,5		;select bank 0
+    88  0003  1283               	global start_initialization
+    89                           	ljmp start_initialization	;jump to C runtime clear & initialization
+    90  0004  2BF5               
+    91                           ; Config register IDLOC0 @ 0x2000
+    92                           ;	using specified literal value
+    93                           
+    94                           	psect	idloc
+    95                           		org 0x0
+    96  2000                     		dw 0x5
+    97  2000  0005               
+    98                           ; Config register IDLOC1 @ 0x2001
+    99                           ;	using specified literal value
+   100                           
+   101                           	psect	idloc
+   102                           		org 0x1
+   103  2001                     		dw 0x9
+   104  2001  0009               
+   105                           ; Config register IDLOC2 @ 0x2002
+   106                           ;	using specified literal value
+   107                           
+   108                           	psect	idloc
+   109                           		org 0x2
+   110  2002                     		dw 0x1
+   111  2002  0001               
+   112                           ; Config register IDLOC3 @ 0x2003
+   113                           ;	using specified literal value
+   114                           
+   115                           	psect	idloc
+   116                           		org 0x3
+   117  2003                     		dw 0x3
+   118  2003  0003               
+   119                           ; Config register CONFIG @ 0x2007
+   120                           ;	Watchdog Timer Enable bit
+   121                           ;	WDTE = OFF, WDT disabled
+   122                           ;	Power-Up Timer Enable bit
+   123                           ;	PWRTE = 0x1, unprogrammed default
+   124                           ;	Code Protection bit
+   125                           ;	CP = 0x1, unprogrammed default
+   126                           ;	Brown-out Detect Enable bit
+   127                           ;	BOREN = 0x1, unprogrammed default
+   128                           ;	GP3/MCLR pin function select
+   129                           ;	MCLRE = OFF, GP3/MCLR pin function is digital I/O, MCLR internally tied to VDD
+   130                           ;	Data Code Protection bit
+   131                           ;	CPD = 0x1, unprogrammed default
+   132                           ;	Oscillator Selection bits
+   133                           ;	FOSC = INTRCIO, INTOSC oscillator: I/O function on GP4/OSC2/CLKOUT pin, I/O function on GP5/OSC1/C
+                                 LKIN
+   134                           
+   135                           	psect	config
+   136                           		org 0x0
+   137  2007                     		dw 0x31D4
+   138  2007  31D4               
+
+
+Microchip Technology PIC Macro Assembler V1.33 build 59893 
+Symbol Table                                                                                               Thu May 17 16:26:20 2018
+
+               ___sp 0000                 _main 02D7                 start 0000                STATUS 0003  
+       ___osccal_val 03FF               stackhi 0000               stacklo 0000  start_initialization 03F5  
+           ___int_sp 0000             intlevel0 0000             intlevel1 0000             intlevel2 0000  
+           intlevel3 0000             intlevel4 0000             intlevel5 0000             reset_vec 0000  

@@ -1,0 +1,136 @@
+
+
+Microchip Technology PIC Macro Assembler V1.33 build 59893 
+                                                                                                           Thu May 17 16:28:30 2018
+
+
+     1                           
+     2                           	; Microchip MPLAB XC8 C Compiler V1.33
+     3                           	; Copyright (C) 1984-2014 HI-TECH Software
+     4                           
+     5                           	; Auto-generated runtime startup code for final link stage.
+     6                           
+     7                           	;
+     8                           	; Compiler options:
+     9                           	;
+    10                           	; --chip=12C508A -G \
+    11                           	; -mdist/default/production/PIC12C508.X.production.map --double=24 \
+    12                           	; --float=24 --opt=all,+asm,+asmfile,-speed,+space,-debug \
+    13                           	; --addrqual=ignore --mode=pro -N31 --warn=0 --asmlist \
+    14                           	; -DXPRJ_default=default \
+    15                           	; --summary=default,+psect,+class,+mem,+hex,-file \
+    16                           	; --output=default,-inhx032 \
+    17                           	; --runtime=default,+clear,+init,+keep,-no_startup,+osccal,-resetbits,-download,-stackcall,+clib \
+
+    18                           	; --output=-mcof,+elf:multilocs --stack=compiled:auto \
+    19                           	; --errformat=%f:%l: error: (%n) %s \
+    20                           	; --warnformat=%f:%l: warning: (%n) %s \
+    21                           	; --msgformat=%f:%l: advisory: (%n) %s \
+    22                           	; -odist/default/production/PIC12C508.X.production.elf \
+    23                           	; build/default/production/main.p1
+    24                           	;
+    25                           
+    26                           
+    27                           	processor	12C508A
+    28                           
+    29                           	global	_main,start,reset_vec
+    30                           	fnroot	_main
+    31                           	psect	config,class=CONFIG,delta=2,noexec
+    32                           	psect	idloc,class=IDLOC,delta=2,noexec
+    33                           	psect	code,class=CODE,delta=2
+    34                           	psect	powerup,class=CODE,delta=2
+    35                           	psect	reset_vec,class=CODE,delta=2
+    36                           	psect	maintext,class=CODE,delta=2
+    37  0000                     	Z	set	2
+    38  0002                     	PCL	set	2
+    39  0002                     	INDF	set	0
+    40  0000                     
+    41                           	STATUS	equ	3
+    42  0003                     	FSR	equ	4
+    43  0004                     OSCCAL	equ	0x5
+    44  0005                     
+    45                           	psect	reset_wrap,class=ENTRY,delta=2
+    46                           	psect	text,class=CODE,delta=2
+    47                           	psect	functab,class=ENTRY,delta=2
+    48                           	psect	init,class=ENTRY,delta=2
+    49                           	psect	cinit,class=ENTRY,delta=2
+    50                           	psect	end_init,class=ENTRY,delta=2
+    51                           	psect	clrtext,class=ENTRY,delta=2
+    52                           	psect	jmp_tab,class=ENTRY,delta=2
+    53                           	psect	strings,class=STRING,delta=2
+    54                           
+    55                           	global stacklo, stackhi
+    56                           	stacklo	equ	0
+    57  0000                     	stackhi	equ	0
+    58  0000                     
+    59                           
+    60                           	psect	stack,class=STACK,space=2,noexec
+    61                           	global ___sp,___int_sp
+    62                           	___sp:
+    63  000                     	___int_sp:
+    64  000                     	psect	reset_vec,class=CODE,delta=2
+    65                           reset_vec:
+    66  1FF                     	ds 1	;oscillator constant would be pre-programmed here
+    67  1FF                     	psect	reset_wrap
+    68                           reset_wrap:
+    69  000                     	clrf	FSR		;select bank 0
+    70  000  064                	movwf	5		;calibrate oscillator
+    71  001  025                	; No powerup routine
+    72                           
+    73                           
+    74                           	psect	init
+    75                           start
+    76  002                     	psect	end_init
+    77                           	global start_initialization
+    78                           	ljmp start_initialization	;jump to C runtime clear & initialization
+    79  002  A03                
+    80                           ; Config register IDLOC0 @ 0x200
+    81                           ;	using specified literal value
+    82                           
+    83                           	psect	idloc
+    84                           		org 0x0
+    85  200                     		dw 0x5
+    86  200  005                
+    87                           ; Config register IDLOC1 @ 0x201
+    88                           ;	using specified literal value
+    89                           
+    90                           	psect	idloc
+    91                           		org 0x1
+    92  201                     		dw 0x9
+    93  201  009                
+    94                           ; Config register IDLOC2 @ 0x202
+    95                           ;	using specified literal value
+    96                           
+    97                           	psect	idloc
+    98                           		org 0x2
+    99  202                     		dw 0x1
+   100  202  001                
+   101                           ; Config register IDLOC3 @ 0x203
+   102                           ;	using specified literal value
+   103                           
+   104                           	psect	idloc
+   105                           		org 0x3
+   106  203                     		dw 0x3
+   107  203  003                
+   108                           ; Config register CONFIG @ 0xFFF
+   109                           ;	Code protection bit
+   110                           ;	CP = 0x1, unprogrammed default
+   111                           ;	Oscillator selection bits
+   112                           ;	OSC = IntRC, internal RC oscillator
+   113                           ;	MCLR enable bit
+   114                           ;	MCLRE = OFF, MCLR tied to VDD, (Internally)
+   115                           ;	Watchdog timer enable bit
+   116                           ;	WDT = OFF, WDT disabled
+   117                           
+   118                           	psect	config
+   119                           		org 0x0
+   120  FFF                     		dw 0xFFEA
+   121  FFF  FFEA                
+
+
+Microchip Technology PIC Macro Assembler V1.33 build 59893 
+Symbol Table                                                                                               Thu May 17 16:28:30 2018
+
+                 FSR 0004                 ___sp 0000                 _main 00C0                 start 0002  
+             stackhi 0000               stacklo 0000  start_initialization 0003             ___int_sp 0000  
+          reset_wrap 0000             reset_vec 01FF  

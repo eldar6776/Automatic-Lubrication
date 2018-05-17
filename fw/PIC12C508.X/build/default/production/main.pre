@@ -1,0 +1,411 @@
+
+# 1 "main.c"
+
+# 21 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\htc.h"
+extern const char __xc8_OPTIM_SPEED;
+
+#pragma intrinsic(__builtin_software_breakpoint)
+extern void __builtin_software_breakpoint(void);
+
+# 47 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic12c508a.h"
+extern volatile unsigned char INDF @ 0x000;
+
+asm("INDF equ 00h");
+
+
+typedef union {
+struct {
+unsigned INDF :8;
+};
+} INDFbits_t;
+extern volatile INDFbits_t INDFbits @ 0x000;
+
+# 66
+extern volatile unsigned char TMR0 @ 0x001;
+
+asm("TMR0 equ 01h");
+
+
+typedef union {
+struct {
+unsigned TMR0 :8;
+};
+} TMR0bits_t;
+extern volatile TMR0bits_t TMR0bits @ 0x001;
+
+# 85
+extern volatile unsigned char PCL @ 0x002;
+
+asm("PCL equ 02h");
+
+
+typedef union {
+struct {
+unsigned PCL :8;
+};
+} PCLbits_t;
+extern volatile PCLbits_t PCLbits @ 0x002;
+
+# 104
+extern volatile unsigned char STATUS @ 0x003;
+
+asm("STATUS equ 03h");
+
+
+typedef union {
+struct {
+unsigned C :1;
+unsigned DC :1;
+unsigned Z :1;
+unsigned nPD :1;
+unsigned nTO :1;
+unsigned PA0 :1;
+unsigned :1;
+unsigned GPWUF :1;
+};
+struct {
+unsigned CARRY :1;
+};
+struct {
+unsigned :2;
+unsigned ZERO :1;
+};
+} STATUSbits_t;
+extern volatile STATUSbits_t STATUSbits @ 0x003;
+
+# 177
+extern volatile unsigned char FSR @ 0x004;
+
+asm("FSR equ 04h");
+
+
+typedef union {
+struct {
+unsigned FSR :8;
+};
+} FSRbits_t;
+extern volatile FSRbits_t FSRbits @ 0x004;
+
+# 196
+extern volatile unsigned char OSCCAL @ 0x005;
+
+asm("OSCCAL equ 05h");
+
+
+typedef union {
+struct {
+unsigned :2;
+unsigned CAL :6;
+};
+struct {
+unsigned :2;
+unsigned CAL0 :1;
+unsigned CAL1 :1;
+unsigned CAL2 :1;
+unsigned CAL3 :1;
+unsigned CAL4 :1;
+unsigned CAL5 :1;
+};
+struct {
+unsigned :2;
+unsigned OSCSLW :1;
+unsigned OSCFST :1;
+};
+} OSCCALbits_t;
+extern volatile OSCCALbits_t OSCCALbits @ 0x005;
+
+# 270
+extern volatile unsigned char GPIO @ 0x006;
+
+asm("GPIO equ 06h");
+
+
+typedef union {
+struct {
+unsigned GP0 :1;
+unsigned GP1 :1;
+unsigned GP2 :1;
+unsigned GP3 :1;
+unsigned GP4 :1;
+unsigned GP5 :1;
+};
+} GPIObits_t;
+extern volatile GPIObits_t GPIObits @ 0x006;
+
+# 319
+extern volatile __control unsigned char OPTION @ 0x000;
+
+
+extern volatile __control unsigned char TRIS @ 0x006;
+
+
+extern volatile __control unsigned char TRISGPIO @ 0x006;
+
+# 347
+extern volatile __bit CAL0 @ (((unsigned) &OSCCAL)*8) + 2;
+
+extern volatile __bit CAL1 @ (((unsigned) &OSCCAL)*8) + 3;
+
+extern volatile __bit CAL2 @ (((unsigned) &OSCCAL)*8) + 4;
+
+extern volatile __bit CAL3 @ (((unsigned) &OSCCAL)*8) + 5;
+
+extern volatile __bit CAL4 @ (((unsigned) &OSCCAL)*8) + 6;
+
+extern volatile __bit CAL5 @ (((unsigned) &OSCCAL)*8) + 7;
+
+extern volatile __bit CARRY @ (((unsigned) &STATUS)*8) + 0;
+
+extern volatile __bit DC @ (((unsigned) &STATUS)*8) + 1;
+
+extern volatile __bit GP0 @ (((unsigned) &GPIO)*8) + 0;
+
+extern volatile __bit GP1 @ (((unsigned) &GPIO)*8) + 1;
+
+extern volatile __bit GP2 @ (((unsigned) &GPIO)*8) + 2;
+
+extern volatile __bit GP3 @ (((unsigned) &GPIO)*8) + 3;
+
+extern volatile __bit GP4 @ (((unsigned) &GPIO)*8) + 4;
+
+extern volatile __bit GP5 @ (((unsigned) &GPIO)*8) + 5;
+
+extern volatile __bit GPWUF @ (((unsigned) &STATUS)*8) + 7;
+
+extern volatile __bit OSCFST @ (((unsigned) &OSCCAL)*8) + 3;
+
+extern volatile __bit OSCSLW @ (((unsigned) &OSCCAL)*8) + 2;
+
+extern volatile __bit PA0 @ (((unsigned) &STATUS)*8) + 5;
+
+extern volatile __bit ZERO @ (((unsigned) &STATUS)*8) + 2;
+
+extern volatile __bit nPD @ (((unsigned) &STATUS)*8) + 3;
+
+extern volatile __bit nTO @ (((unsigned) &STATUS)*8) + 4;
+
+
+# 27 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic.h"
+#pragma intrinsic(__nop)
+extern void __nop(void);
+
+
+# 153
+#pragma intrinsic(_delay)
+extern __nonreentrant void _delay(unsigned long);
+
+# 22 "typedefs.h"
+typedef unsigned char byte;
+typedef unsigned int word;
+typedef unsigned long dword;
+
+typedef union _BYTE {
+byte _byte;
+
+struct {
+unsigned b0 : 1;
+unsigned b1 : 1;
+unsigned b2 : 1;
+unsigned b3 : 1;
+unsigned b4 : 1;
+unsigned b5 : 1;
+unsigned b6 : 1;
+unsigned b7 : 1;
+};
+} BYTE;
+
+typedef union _WORD {
+word _word;
+
+struct {
+byte byte0;
+byte byte1;
+};
+
+struct {
+BYTE Byte0;
+BYTE Byte1;
+};
+
+struct {
+BYTE low_byte;
+BYTE high_byte;
+};
+struct {
+unsigned char lsb;
+unsigned char msb;
+};
+
+struct {
+byte v[2];
+};
+} WORD;
+
+
+
+typedef enum _BOOL {
+FALSE = 0, TRUE
+} BOOL;
+
+# 34 "main.c"
+__config("__CONFIG", "pic", "MCLRDIS & WDTDIS & INTRC & UNPROTECT");
+
+__config("__IDLOC", "pic", "5913");
+
+# 46
+unsigned char tmp1;
+unsigned char output_tmr;
+unsigned char led_tmr;
+unsigned char dip_sw_pcnt;
+unsigned int counter;
+unsigned int dip_sw_value;
+
+# 61
+BYTE sys_flags;
+
+# 69
+BYTE hc164_shift;
+
+# 125
+void main(void){
+
+
+GPIO = 0x00;
+TRIS = 0b00111000;
+OPTION = 0b11000111;
+TMR0 = 61;
+
+
+sys_flags.b0 = GP3;
+sys_flags.b1 = GP4;
+GP1 = 0;
+GP2 = 0;
+GP2 = 1;
+dip_sw_pcnt = 0;
+led_tmr = 40;
+output_tmr = 40;
+
+(hc164_shift.b6 = 1);
+(hc164_shift.b7 = 0);
+(hc164_shift._byte |= 0b00111111);
+(sys_flags.b3 = 1, dip_sw_pcnt = 0);
+(sys_flags.b5 = 1);
+
+while (1) {
+
+if (TMR0 == 0xff) {
+TMR0 = 61;
+
+if (output_tmr) --output_tmr;
+else if ((hc164_shift.b7 == 0)) {
+(hc164_shift.b7 = 1);
+(sys_flags.b5 = 1);
+}
+
+if (led_tmr) --led_tmr;
+else if ((hc164_shift.b6 == 1)) {
+(hc164_shift.b6 = 0);
+(sys_flags.b5 = 1);
+}
+}
+
+if (sys_flags.b0 != GP3) {
+sys_flags.b0 = GP3;
+if (GP3) {
+if ((sys_flags.b2 == 1)) {
+led_tmr = 40;
+(hc164_shift.b6 = 1);
+output_tmr = 40;
+(hc164_shift.b7 = 0);
+} else {
+(hc164_shift.b7 = 1);
+led_tmr = 2;
+(hc164_shift.b6 = 1);
+}
+(sys_flags.b5 = 1);
+(sys_flags.b3 = 1, dip_sw_pcnt = 0);
+}
+}
+
+if (sys_flags.b1 != GP4) {
+sys_flags.b1 = GP4;
+if (GP4) {
+if (counter) {
+--counter;
+if (!led_tmr) led_tmr = 2;
+(hc164_shift.b6 = 1);
+(sys_flags.b5 = 1);
+}
+if (!counter) {
+if ((sys_flags.b2 == 1)) {
+led_tmr = 40;
+(hc164_shift.b6 = 1);
+output_tmr = 40;
+(hc164_shift.b7 = 0);
+(sys_flags.b3 = 1, dip_sw_pcnt = 0);
+} else {
+(hc164_shift.b7 = 1);
+(hc164_shift.b6 = 0);
+}
+(sys_flags.b5 = 1);
+}
+}
+}
+
+if ((sys_flags.b3 == 1)) {
+if (dip_sw_pcnt == 0) {
+dip_sw_value = 0;
+((hc164_shift._byte |= 0b00111111), hc164_shift.b0 = 0);
+(sys_flags.b5 = 1);
+++dip_sw_pcnt;
+} else if (dip_sw_pcnt == 1) {
+if (GP5 == 0) dip_sw_value += 100;
+((hc164_shift._byte |= 0b00111111), hc164_shift.b1 = 0);
+(sys_flags.b5 = 1);
+++dip_sw_pcnt;
+} else if (dip_sw_pcnt == 2) {
+if (GP5 == 0) dip_sw_value += 200;
+((hc164_shift._byte |= 0b00111111), hc164_shift.b2 = 0);
+(sys_flags.b5 = 1);
+++dip_sw_pcnt;
+} else if (dip_sw_pcnt == 3) {
+if (GP5 == 0) dip_sw_value += 400;
+((hc164_shift._byte |= 0b00111111), hc164_shift.b3 = 0);
+(sys_flags.b5 = 1);
+++dip_sw_pcnt;
+} else if (dip_sw_pcnt == 4) {
+if (GP5 == 0) dip_sw_value += 800;
+((hc164_shift._byte |= 0b00111111), hc164_shift.b4 = 0);
+(sys_flags.b5 = 1);
+++dip_sw_pcnt;
+} else if(dip_sw_pcnt == 5){
+if (GP5 == 0) dip_sw_value += 1600;
+((hc164_shift._byte |= 0b00111111), hc164_shift.b5 = 0);
+(sys_flags.b5 = 1);
+++dip_sw_pcnt;
+} else if (dip_sw_pcnt == 6) {
+if (GP5 == 0) dip_sw_value += 3200;
+(hc164_shift._byte |= 0b00111111);
+counter = dip_sw_value;
+if (dip_sw_value == 0) (sys_flags.b2 = 0);
+else (sys_flags.b2 = 1);
+(sys_flags.b5 = 1);
+(sys_flags.b3 = 0);
+++dip_sw_pcnt;
+}
+}
+
+if ((sys_flags.b5 == 1)) {
+tmp1 = 8;
+while (tmp1) {
+if (((hc164_shift._byte) & (1 <<((tmp1 - 1))))) GP0 = 1;
+else GP0 = 0;
+GP1 = 1;
+GP1 = 0;
+tmp1--;
+}
+(sys_flags.b5 = 0);
+}
+}
+}
+

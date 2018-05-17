@@ -1,0 +1,28 @@
+Field=Comment~String~Comment~100|Field=Description~String~Description~100|Field=Designator~String~Designator~100|Field=Footprint~String~Footprint~100|Field=LibRef~String~LibRef~100|Field=Quantity~Integer~Quantity~100|ReportField=Currency~<none>|ReportField=ProductionQuantity~1|ReportField=ProjectFileName~AUTOMATSKO_PODMAZIVANJE.PrjPcb|ReportField=ProjectFullPath~C:\Users\DoE\SkyDrive\temp\ILLIG RDM70K Brojaè centralnog podmazivanja\hw\v1.00\AUTOMATSKO_PODMAZIVANJE.PrjPcb|ReportField=Title~Bill of Materials For Project [AUTOMATSKO_PODMAZIVANJE.PrjPcb] (No PCB Document Selected)|ReportField=TotalQuantity~65|ReportField=ReportTime~19:41:34|ReportField=ReportDate~11.10.2013|ReportField=ReportDateTime~11.10.2013 19:41:34|ReportField=OutputName~Bill of Materials|ReportField=OutputType~BOM_PartType|ReportField=GeneratorName~BOM|ReportField=GeneratorDescription~Bill of Materials|ReportField=VariantName~None|ReportField=Address1~|ReportField=Address2~|ReportField=Address3~|ReportField=Address4~|ReportField=ApprovedBy~|ReportField=Author~eldar6776@hotmail.com|ReportField=CheckedBy~|ReportField=CompanyName~PROVEN d.o.o.|ReportField=CurrentDate~11.10.2013|ReportField=CurrentTime~19:38:10|ReportField=Date~|ReportField=DocumentFullPathAndName~C:\Users\DoE\SkyDrive\temp\ILLIG RDM70K Brojaè centralnog podmazivanja\hw\v1.00\AUTOMATSKO_PODMAZIVANJE.SchDoc|ReportField=DocumentName~AUTOMATSKO_PODMAZIVANJE.SchDoc|ReportField=DocumentNumber~|ReportField=DrawnBy~Eldar Dedic|ReportField=Engineer~|ReportField=ImagePath~|ReportField=ModifiedDate~11.10.2013|ReportField=Organization~|ReportField=ProjectName~AUTOMATSKO_PODMAZIVANJE.PrjPcb|ReportField=Revision~|ReportField=Rule~|ReportField=SheetNumber~1|ReportField=SheetTotal~|ReportField=Time~|ReportField=Title~Lubrication counter|ReportField=DataSourceFileName~AUTOMATSKO_PODMAZIVANJE.PrjPcb|ReportField=DataSourceFullPath~C:\Users\DoE\SkyDrive\temp\ILLIG RDM70K Brojaè centralnog podmazivanja\hw\v1.00\AUTOMATSKO_PODMAZIVANJE.PrjPcb
+220nF|Dipped Radial Multilayer Ceramic Capacitor X7R: 5.6uF, 100V|C1, C2|VP60-6.3|VP60BY565MB|2
+|Ceramic Chip Capacitor - Standard|C3, C6, C8, C9, C12, C13, C14|1206|C1206|7
+|Ceramic Chip Capacitor - Standard|C4, C10, C11|0805|C0805|3
+47uF/63V|Aluminum Electrolytic Capacitor, Radial Style with Long Leads: 220uF, 10V|C5, C7|CAPPR2-5X11|EKA00AA322C00|2
+1N4007|1 Amp General Purpose Rectifier|D1, D6, D8|DO-41|Diode 1N4007|3
+1N4148|Default Diode|D2, D3, D4, D5, D7, D9|D-64|Diode|6
+5V1|Zener Diode|D10, D11|DO-35|D Zener|2
+LED_ZELENA|Typical RED GaAs LED|D12|LED-1|LED1|1
+10V|Zener Diode|D13|DO-35|D Zener|1
+|Magnetic-Core Inductor|L1, L2|AXIAL-0.4|Inductor Iron|2
+POWER|KONEKTOR 2 PINA|P1|TERMINAL KONEKTOR 2|CON|1
+IO|TERMINAL KONEKTOR 3|P2|TERMINAL KONEKTOR 3|TERMINAL KONEKTOR 3 PINA|1
+BC807|PNP Bipolar Transistor|Q1, Q2|SOT-23B_N|PNP|2
+BC817|General Purpose Transistor NPN Silicon|Q3, Q5|318-08|BC817-16LT1|2
+IRF630|N-Channel 60V (D-S), 175'C  MOSFET|Q4|TO-220AB|SUP75N06-08|1
+1R|Rectangular Thick Film Chip Resistor, 10 Ohm to 1M Ohm Range, 0.1% and 0.5% Tolerance, 0805 Size, 0.1 W|R1, R3, R19, R20|ERA-0805|ERA6Y|4
+240R|Rectangular Thick Film Chip Resistor, 10 Ohm to 1M Ohm Range, 0.1% and 0.5% Tolerance, 0805 Size, 0.1 W|R2|ERA-0805|ERA6Y|1
+2K2|Rectangular Thick Film Chip Resistor, 10 Ohm to 1M Ohm Range, 0.1% and 0.5% Tolerance, 0805 Size, 0.1 W|R4|ERA-0805|ERA6Y|1
+1K|Rectangular Thick Film Chip Resistor, 10 Ohm to 1M Ohm Range, 0.1% and 0.5% Tolerance, 0805 Size, 0.1 W|R5, R6, R12, R14, R22, R25|ERA-0805|ERA6Y|6
+820R|Rectangular Thick Film Chip Resistor, 10 Ohm to 1M Ohm Range, 0.1% and 0.5% Tolerance, 0805 Size, 0.1 W|R7, R8, R9, R10|ERA-0805|ERA6Y|4
+10K|Rectangular Thick Film Chip Resistor, 10 Ohm to 1M Ohm Range, 0.1% and 0.5% Tolerance, 0805 Size, 0.1 W|R11, R13, R16, R17, R18, R21, R24|ERA-0805|ERA6Y|7
+330R|Rectangular Thick Film Chip Resistor, 10 Ohm to 1M Ohm Range, 0.1% and 0.5% Tolerance, 0805 Size, 0.1 W|R15|ERA-0805|ERA6Y|1
+47R|Rectangular Thick Film Chip Resistor, 10 Ohm to 1M Ohm Range, 0.1% and 0.5% Tolerance, 0805 Size, 0.1 W|R23|ERA-0805|ERA6Y|1
+SW-DIP8|4009 Series DIP Switch, Raised actuator|S1|DIP-16-KEY|SW-DIP8|1
+LM317T|3-Terminal Adjustable Positive Voltage Regulator|U1|221A-04|LM317T|1
+MC74HC164N|8-Bit Serial-Input/Parallel-Output Shift Register|U2|646-06|MC74HC164N|1
+PIC12F508-I/SN|8-bit Flash Microcontroller, 512 (x12-Bit words) Program Memory, 25 Bytes Data Memory, 8-Pin SOIC, Industrial Temperature|U3|SOIC-SN8_N|PIC12F508-I/SN|1
